@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class RedirectIfAuthenticated
 {
     /**
-     * Handle an incoming request.
+     * Redirect user to HOME if autheticated and try to acess login or register.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
@@ -16,7 +16,7 @@ class RedirectIfAuthenticated
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
-    {
+    {   
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }
